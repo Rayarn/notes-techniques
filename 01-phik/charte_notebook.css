@@ -1,14 +1,5 @@
 /* =========================================================================
-   FEUILLE DE STYLE NOTEBOOK, CONFORME A LA CHARTE v1.0
-   Prefixe de classe : nt-
-   Cible : JupyterLab 4 / Notebook 7 (.jp-*) et Notebook classique (.rendered_html)
-   =========================================================================
-   ECHELLE : la charte est calibree pour 1080 x 1350. Les rapports entre
-   niveaux sont conserves a l'identique, le corps est ancre a 16 px.
-   titre 84/29 = 2.90 -> 46px | aplat 58/29 = 2.00 -> 32px
-   chapo 32/29 = 1.10 -> 18px | intertitre 33/29 = 1.14 -> 18px
-   cellule 26/29 = 0.90 -> 15px | capitales 24/29 = 0.83 -> 13px
-   interlignes : corps 1.45, titre 1.10, chapo 1.44
+   FEUILLE DE STYLE NOTEBOOK
    ========================================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap');
@@ -1061,3 +1052,5 @@ div.output_subarea {
         padding-right: 4px !important;
     }
 }
+
+.jp-RenderedHTMLCommon table, .rendered_html table { display: block; overflow-x: auto; }
