@@ -7554,7 +7554,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
@@ -8505,6 +8505,148 @@ div.cell.selected.edit_mode {
     width: 100% !important;
     max-width: none !important;
     box-sizing: border-box !important;
+}
+
+
+/* -------------------------------------------------------------------------
+12. RESPONSIVITE DES CELLULES DE CODE DANS L'EXPORT HTML
+------------------------------------------------------------------------- */
+.jp-CodeCell,
+.jp-Cell-inputWrapper,
+.jp-Cell-inputArea,
+.jp-InputArea,
+.jp-InputArea-editor,
+.jp-CodeMirrorEditor,
+.jp-Cell-outputWrapper,
+.jp-Cell-outputArea,
+.jp-OutputArea,
+.jp-OutputArea-child,
+.jp-OutputArea-output,
+.cm-editor,
+div.cell.code_cell,
+div.input,
+div.input_area,
+div.output_wrapper,
+div.output,
+div.output_subarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.jp-CodeCell,
+.jp-Cell-inputWrapper,
+.jp-Cell-inputArea,
+.jp-InputArea,
+.jp-Cell-outputWrapper,
+.jp-Cell-outputArea,
+.jp-OutputArea,
+div.cell.code_cell,
+div.input,
+div.output_wrapper {
+    overflow: visible !important;
+}
+
+.jp-InputArea-editor pre,
+.jp-CodeMirrorEditor pre,
+.jp-CodeCell .cm-editor pre,
+.jp-CodeCell .highlight pre,
+div.input_area pre,
+div.cell.code_cell div.input_area pre {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+    overflow-x: visible !important;
+    box-sizing: border-box !important;
+}
+
+.jp-InputArea-editor pre code,
+.jp-CodeMirrorEditor pre code,
+.jp-CodeCell .cm-editor pre code,
+.jp-CodeCell .highlight pre code,
+div.input_area pre code {
+    white-space: inherit !important;
+    overflow-wrap: inherit !important;
+    word-break: inherit !important;
+}
+
+.jp-RenderedText pre,
+.jp-OutputArea-output pre,
+.jp-OutputArea-output code,
+div.output_subarea pre,
+div.output_subarea code {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+    overflow-x: visible !important;
+    box-sizing: border-box !important;
+}
+
+.jp-InputArea,
+.jp-OutputArea-child {
+    display: grid !important;
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr) !important;
+}
+
+.jp-InputPrompt,
+.jp-OutputPrompt,
+div.prompt {
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.jp-InputArea-editor,
+.jp-OutputArea-output,
+div.input_area,
+div.output_subarea {
+    min-width: 0 !important;
+}
+
+.jp-OutputArea-output img,
+.output_png img,
+.jp-RenderedHTMLCommon img,
+.rendered_html img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+@media screen and (max-width: 600px) {
+    .jp-CodeCell,
+    .cell.code_cell {
+        padding-left: 4px !important;
+    }
+
+    .jp-InputArea-editor pre,
+    .jp-CodeMirrorEditor pre,
+    .jp-CodeCell .cm-editor pre,
+    .jp-CodeCell .highlight pre,
+    div.input_area pre {
+        font-size: 12px !important;
+        line-height: 1.55 !important;
+    }
+
+    .jp-RenderedText pre,
+    .jp-OutputArea-output pre,
+    div.output_subarea pre {
+        font-size: 12px !important;
+        line-height: 1.55 !important;
+    }
+
+    .jp-InputPrompt,
+    .jp-OutputPrompt,
+    div.prompt {
+        width: 28px !important;
+        min-width: 28px !important;
+        font-size: 10px !important;
+        padding-right: 4px !important;
+    }
 }</style>
 </div>
 </div>
