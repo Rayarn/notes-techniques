@@ -1,0 +1,1056 @@
+/* =========================================================================
+   FEUILLE DE STYLE NOTEBOOK
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Palette, valeurs exactes de la charte, aucune autre autorisee */
+  --nt-ivory:  #F7F5F1;
+  --nt-ink:    #0B0D12;
+  --nt-violet: #3B2A55;
+  --nt-grey:   #3E3B36;
+  --nt-grey2:  #5C584F;
+  --nt-rule:   #D6D1C7;
+  /* Couleurs de support, uniquement a l'interieur d'un aplat violet */
+  --nt-on-violet-label: #B7ABC9;
+  --nt-on-violet-text:  #DCD5E4;
+
+  --nt-serif: 'Spectral', Georgia, 'Times New Roman', serif;
+  --nt-sans:  'IBM Plex Sans', -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --nt-mono:  'IBM Plex Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --nt-s-title:  46px;
+  --nt-s-accent: 32px;
+  --nt-s-lede:   18px;
+  --nt-s-body:   16px;
+  --nt-s-cell:   15px;
+  --nt-s-label:  13px;
+  --nt-s-foot:   13px;
+  --nt-track:    0.16em;  /* interlettrage des capitales */
+  --nt-margin:   7%;      /* marge de la charte */
+}
+
+/* -------------------------------------------------------------------------
+   1. FOND ET TYPOGRAPHIE GLOBALE
+   ------------------------------------------------------------------------- */
+
+.jp-Notebook, .jp-WindowedPanel-outer, #notebook, body.notebook_app,
+.jp-NotebookPanel, .jp-Cell {
+  background-color: var(--nt-ivory) !important;
+}
+
+.jp-RenderedHTMLCommon, .jp-MarkdownOutput, .rendered_html {
+  font-family: var(--nt-sans) !important;
+  font-size: var(--nt-s-body) !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  color: var(--nt-grey) !important;
+  text-align: left !important;   /* jamais de justification */
+  max-width: none !important;
+}
+
+.jp-RenderedHTMLCommon p, .rendered_html p { margin: 0 0 14px 0 !important; }
+
+/* La hierarchie passe par la taille et la couleur, jamais par la graisse */
+.jp-RenderedHTMLCommon strong, .rendered_html strong,
+.jp-RenderedHTMLCommon b, .rendered_html b {
+  font-weight: 500 !important;
+  color: var(--nt-ink) !important;
+}
+
+.jp-RenderedHTMLCommon em, .rendered_html em {
+  font-family: var(--nt-serif) !important;
+  font-style: italic !important;
+}
+
+.jp-RenderedHTMLCommon a, .rendered_html a {
+  color: var(--nt-violet) !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid var(--nt-rule) !important;
+}
+
+.jp-RenderedHTMLCommon hr, .rendered_html hr {
+  border: none !important;
+  border-top: 1px solid var(--nt-rule) !important;
+  margin: 34px 0 !important;
+}
+
+/* -------------------------------------------------------------------------
+   2. TITRES
+   ------------------------------------------------------------------------- */
+
+.jp-RenderedHTMLCommon h1, .rendered_html h1 {
+  font-family: var(--nt-serif) !important;
+  font-weight: 400 !important;
+  font-size: var(--nt-s-title) !important;
+  line-height: 1.10 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--nt-ink) !important;
+  margin: 0 0 22px 0 !important;
+  border: none !important;
+}
+
+.jp-RenderedHTMLCommon h2, .rendered_html h2 {
+  font-family: var(--nt-serif) !important;
+  font-weight: 400 !important;
+  font-size: var(--nt-s-accent) !important;
+  line-height: 1.20 !important;
+  color: var(--nt-ink) !important;
+  margin: 42px 0 16px 0 !important;
+  padding-top: 16px !important;
+  border-top: 1px solid var(--nt-rule) !important;
+}
+
+.jp-RenderedHTMLCommon h3, .rendered_html h3 {
+  font-family: var(--nt-sans) !important;
+  font-weight: 500 !important;
+  font-size: var(--nt-s-lede) !important;
+  color: var(--nt-ink) !important;
+  margin: 30px 0 10px 0 !important;
+}
+
+.jp-RenderedHTMLCommon h4, .rendered_html h4 {
+  font-family: var(--nt-sans) !important;
+  font-weight: 500 !important;
+  font-size: var(--nt-s-label) !important;
+  text-transform: uppercase !important;
+  letter-spacing: var(--nt-track) !important;
+  color: var(--nt-violet) !important;
+  margin: 26px 0 8px 0 !important;
+}
+
+.jp-RenderedHTMLCommon h5, .jp-RenderedHTMLCommon h6,
+.rendered_html h5, .rendered_html h6 { display: none !important; }
+
+/* -------------------------------------------------------------------------
+   3. LES DEUX FILETS, SIGNATURE DE LA MARQUE
+   nt-head : filet 4 px + libelle de serie a gauche, numero violet a droite
+   nt-foot : filet 1 px clair + signature a gauche, source italique a droite
+   ------------------------------------------------------------------------- */
+
+.nt-head {
+  border-top: 4px solid var(--nt-ink);
+  padding-top: 12px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--nt-sans);
+  font-weight: 500;
+  font-size: var(--nt-s-label);
+  text-transform: uppercase;
+  letter-spacing: var(--nt-track);
+  color: var(--nt-ink);
+}
+
+.nt-head .nt-num {
+  color: var(--nt-violet);
+  letter-spacing: var(--nt-track);
+}
+
+.nt-foot {
+  border-top: 1px solid var(--nt-rule);
+  padding-top: 12px;
+  margin-top: 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--nt-sans);
+  font-weight: 400;
+  font-size: var(--nt-s-foot);
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--nt-grey2);
+}
+
+.nt-foot .nt-src {
+  font-family: var(--nt-serif);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--nt-violet);
+}
+
+/* -------------------------------------------------------------------------
+   4. COUVERTURE ET SECTIONS
+   ------------------------------------------------------------------------- */
+
+.nt-cover {
+  padding: 0 var(--nt-margin);
+  margin-bottom: 56px;
+}
+
+.nt-cover .nt-title {
+  font-family: var(--nt-serif);
+  font-weight: 400;
+  font-size: var(--nt-s-title);
+  line-height: 1.10;
+  letter-spacing: -0.01em;
+  color: var(--nt-ink);
+  margin: 0 0 24px 0;
+  max-width: none;
+  white-space: nowrap;
+}
+
+.nt-cover .nt-meta {
+  display: flex;
+  gap: 56px;
+  margin-top: 40px;
+}
+
+.nt-cover .nt-meta > div { flex: 0 0 auto; }
+
+/* Transition de section : numero Spectral violet, titre Spectral noir */
+.nt-section {
+  border-top: 4px solid var(--nt-ink);
+  padding-top: 16px;
+  margin: 60px 0 34px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+}
+
+.nt-section .nt-n {
+  font-family: var(--nt-serif);
+  font-weight: 400;
+  font-size: var(--nt-s-accent);
+  color: var(--nt-violet);
+  line-height: 1;
+}
+
+.nt-section .nt-t {
+  font-family: var(--nt-serif);
+  font-weight: 400;
+  font-size: var(--nt-s-accent);
+  color: var(--nt-ink);
+  line-height: 1.15;
+}
+
+/* -------------------------------------------------------------------------
+   5. BLOCS DE TEXTE
+   ------------------------------------------------------------------------- */
+
+/* Chapo : deux ou trois lignes de contexte factuel */
+.nt-lede {
+  font-size: var(--nt-s-lede);
+  line-height: 1.44;
+  color: var(--nt-grey);
+  max-width: 62ch;
+  margin: 0 0 26px 0;
+}
+
+/* Libelle en capitales interlettrees */
+.nt-label {
+  display: block;
+  font-family: var(--nt-sans);
+  font-weight: 500;
+  font-size: var(--nt-s-label);
+  text-transform: uppercase;
+  letter-spacing: var(--nt-track);
+  color: var(--nt-violet);
+  margin-bottom: 8px;
+}
+
+.nt-label-ink { color: var(--nt-ink); }
+
+/* Format A : liste numerotee, deux ou trois entrees */
+.nt-list { margin: 26px 0; }
+
+.nt-item {
+  display: flex;
+  gap: 20px;
+  padding: 16px 0;
+  border-top: 1px solid var(--nt-rule);
+}
+
+.nt-item:last-child { border-bottom: 1px solid var(--nt-rule); }
+
+.nt-item .nt-n {
+  font-family: var(--nt-serif);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.1;
+  color: var(--nt-violet);
+  flex: 0 0 42px;
+}
+
+.nt-item .nt-h {
+  font-family: var(--nt-sans);
+  font-weight: 500;
+  font-size: var(--nt-s-lede);
+  color: var(--nt-ink);
+  margin: 0 0 4px 0;
+}
+
+.nt-item .nt-d {
+  font-size: var(--nt-s-body);
+  line-height: 1.45;
+  color: var(--nt-grey2);
+  margin: 0;
+  max-width: 68ch;
+}
+
+/* Aplat violet : un seul par section, il porte le point central */
+.nt-accent {
+  background: var(--nt-violet);
+  padding: 26px 34px;      /* marge interne 42 px a l'echelle du visuel */
+  margin: 34px 0;
+}
+
+.nt-accent .nt-label { color: var(--nt-on-violet-label); }
+
+.nt-accent .nt-t {
+  font-family: var(--nt-serif);
+  font-weight: 400;
+  font-size: var(--nt-s-accent);
+  line-height: 1.20;
+  color: var(--nt-ivory);
+  margin: 0 0 10px 0;
+}
+
+.nt-accent p, .nt-accent li {
+  font-size: var(--nt-s-body);
+  line-height: 1.45;
+  color: var(--nt-on-violet-text);
+  margin: 0;
+}
+
+/* Bloc de limite : obligatoire, il distingue une note d'un argumentaire */
+.nt-limit {
+  border-left: 3px solid var(--nt-ink);
+  padding-left: 22px;
+  margin: 30px 0;
+}
+
+.nt-limit .nt-label { color: var(--nt-violet); }
+
+.nt-limit p {
+  font-size: var(--nt-s-body);
+  line-height: 1.45;
+  color: var(--nt-grey);
+  margin: 0;
+  max-width: none;
+}
+
+/* Citation */
+.nt-quote {
+  border-left: 1px solid var(--nt-rule);
+  padding-left: 22px;
+  margin: 30px 0;
+  font-family: var(--nt-serif);
+  font-style: italic;
+  font-size: var(--nt-s-lede);
+  line-height: 1.5;
+  color: var(--nt-grey);
+}
+
+.nt-quote .nt-src {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  font-family: var(--nt-sans);
+  font-size: var(--nt-s-foot);
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--nt-grey2);
+}
+
+/* Chiffres cles : aucune carte, aucun fond, seulement des filets */
+.nt-figures {
+  display: flex;
+  gap: 0;
+  margin: 30px 0;
+  border-top: 2px solid var(--nt-ink);
+  border-bottom: 1px solid var(--nt-rule);
+}
+
+.nt-fig {
+  flex: 1 1 0;
+  padding: 18px 24px 18px 0;
+  border-right: 1px solid var(--nt-rule);
+}
+
+.nt-fig:last-child { border-right: none; padding-right: 0; }
+
+.nt-fig .nt-v {
+  font-family: var(--nt-serif);
+  font-weight: 400;
+  font-size: var(--nt-s-accent);
+  color: var(--nt-ink);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.nt-fig .nt-k {
+  font-family: var(--nt-sans);
+  font-weight: 500;
+  font-size: var(--nt-s-label);
+  text-transform: uppercase;
+  letter-spacing: var(--nt-track);
+  color: var(--nt-grey2);
+  margin-top: 8px;
+}
+
+/* Sommaire */
+.nt-toc { margin: 30px 0; border-top: 2px solid var(--nt-ink); }
+
+.nt-toc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--nt-rule);
+}
+
+.nt-toc-item .nt-n {
+  font-family: var(--nt-serif);
+  font-size: var(--nt-s-lede);
+  color: var(--nt-violet);
+  flex: 0 0 42px;
+}
+
+.nt-toc-item .nt-t { color: var(--nt-ink); flex: 1 1 auto; }
+
+.nt-toc-item .nt-x {
+  font-size: var(--nt-s-foot);
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--nt-grey2);
+}
+
+/* Grille deux colonnes */
+.nt-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+  margin: 30px 0;
+}
+
+.nt-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 34px;
+  margin: 30px 0;
+}
+
+/* Note de bas de page et appel de note */
+.nt-note {
+  font-size: var(--nt-s-foot);
+  line-height: 1.5;
+  color: var(--nt-grey2);
+  border-top: 1px solid var(--nt-rule);
+  padding-top: 12px;
+  margin-top: 26px;
+}
+
+.nt-ref {
+  font-family: var(--nt-serif);
+  font-size: 0.75em;
+  vertical-align: super;
+  color: var(--nt-violet);
+}
+
+/* Listes markdown */
+.jp-RenderedHTMLCommon ul, .jp-RenderedHTMLCommon ol,
+.rendered_html ul, .rendered_html ol {
+  margin: 0 0 16px 0 !important;
+  padding-left: 20px !important;
+}
+
+.jp-RenderedHTMLCommon li, .rendered_html li {
+  margin-bottom: 6px !important;
+  color: var(--nt-grey) !important;
+}
+
+.jp-RenderedHTMLCommon ul > li::marker, .rendered_html ul > li::marker {
+  color: var(--nt-violet) !important;
+}
+
+/* -------------------------------------------------------------------------
+   6. TABLEAUX (markdown et pandas)
+   Filet 2 px en haut, 1 px sous l'en-tete, filets clairs entre les lignes,
+   un seul filet vertical apres la colonne de libelles.
+   Aucun fond de cellule, aucune bordure exterieure, aucun zebrage.
+   ------------------------------------------------------------------------- */
+
+.jp-RenderedHTMLCommon table, .rendered_html table, table.dataframe {
+  border-collapse: collapse !important;
+  border: none !important;
+  width: 100% !important;
+  margin: 26px 0 !important;
+  font-family: var(--nt-sans) !important;
+  font-size: var(--nt-s-cell) !important;
+  color: var(--nt-grey) !important;
+  background: transparent !important;
+}
+
+.jp-RenderedHTMLCommon thead th, .rendered_html thead th, table.dataframe thead th {
+  border: none !important;
+  border-top: 2px solid var(--nt-ink) !important;
+  border-bottom: 1px solid var(--nt-ink) !important;
+  background: transparent !important;
+  font-weight: 500 !important;
+  font-size: var(--nt-s-label) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: var(--nt-ink) !important;
+  text-align: left !important;
+  padding: 10px 14px 10px 0 !important;
+  vertical-align: bottom !important;
+}
+
+.jp-RenderedHTMLCommon tbody td, .jp-RenderedHTMLCommon tbody th,
+.rendered_html tbody td, .rendered_html tbody th,
+table.dataframe tbody td, table.dataframe tbody th {
+  border: none !important;
+  border-bottom: 1px solid var(--nt-rule) !important;
+  background: transparent !important;
+  padding: 9px 14px 9px 0 !important;
+  text-align: left !important;
+  font-weight: 400 !important;
+  vertical-align: top !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* Colonne de libelles : seul filet vertical admis */
+.jp-RenderedHTMLCommon tbody tr > *:first-child,
+.rendered_html tbody tr > *:first-child,
+table.dataframe tbody tr > *:first-child {
+  border-right: 1px solid var(--nt-rule) !important;
+  color: var(--nt-ink) !important;
+  padding-right: 18px !important;
+}
+
+.jp-RenderedHTMLCommon thead tr > *:first-child,
+.rendered_html thead tr > *:first-child,
+table.dataframe thead tr > *:first-child {
+  border-right: 1px solid var(--nt-rule) !important;
+  padding-right: 18px !important;
+}
+
+/* Neutralisation du zebrage et du survol par defaut de Jupyter */
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
+.jp-RenderedHTMLCommon tbody tr:nth-child(even),
+.rendered_html tbody tr:nth-child(odd),
+.rendered_html tbody tr:nth-child(even),
+table.dataframe tbody tr:nth-child(odd),
+table.dataframe tbody tr:hover {
+  background: transparent !important;
+}
+
+/* Colonnes numeriques : alignement a droite */
+.nt-num, td.nt-num, th.nt-num { text-align: right !important; padding-right: 0 !important; }
+
+/* Legende de tableau ou de figure */
+.nt-caption {
+  font-family: var(--nt-serif);
+  font-style: italic;
+  font-size: var(--nt-s-foot);
+  color: var(--nt-grey2);
+  margin: -14px 0 26px 0;
+}
+
+/* -------------------------------------------------------------------------
+   7. CELLULES DE CODE ET SORTIES
+   Le violet n'est pas utilise ici : une cellule de code se repete, l'accent
+   resterait sous la regle des 5 pour cent du dosage.
+   ------------------------------------------------------------------------- */
+
+.jp-InputArea-editor, .jp-CodeMirrorEditor, .CodeMirror, div.input_area {
+  background: var(--nt-ivory) !important;
+  border: none !important;
+  border-left: 2px solid var(--nt-ink) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.jp-CodeMirrorEditor .cm-content, .CodeMirror pre, div.input_area pre,
+.jp-InputArea-editor .cm-editor {
+  font-family: var(--nt-mono) !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: var(--nt-ink) !important;
+}
+
+/* Coloration syntaxique sobre : trois niveaux, aucune couleur d'alerte */
+.cm-keyword, .cm-s-jupyter .cm-keyword { color: var(--nt-violet) !important; font-weight: 500 !important; }
+.cm-def, .cm-variable-2, .cm-builtin, .cm-s-jupyter .cm-def { color: var(--nt-ink) !important; }
+.cm-string, .cm-s-jupyter .cm-string, .cm-number, .cm-s-jupyter .cm-number { color: var(--nt-grey2) !important; }
+.cm-comment, .cm-s-jupyter .cm-comment {
+  color: var(--nt-grey2) !important;
+  font-family: var(--nt-serif) !important;
+  font-style: italic !important;
+}
+.cm-operator, .cm-punctuation, .cm-meta { color: var(--nt-grey) !important; }
+
+/* Invites d'execution */
+.jp-InputPrompt, .jp-OutputPrompt, div.prompt {
+  font-family: var(--nt-mono) !important;
+  font-size: 12px !important;
+  color: var(--nt-grey2) !important;
+  opacity: 0.7 !important;
+}
+
+/* Sortie texte */
+.jp-OutputArea-output, div.output_subarea, .jp-RenderedText pre {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-family: var(--nt-mono) !important;
+  font-size: 13.5px !important;
+  line-height: 1.55 !important;
+  color: var(--nt-grey2) !important;
+}
+
+.jp-OutputArea-child { padding-left: 0 !important; }
+
+/* Code en ligne dans le markdown */
+.jp-RenderedHTMLCommon code, .rendered_html code {
+  font-family: var(--nt-mono) !important;
+  font-size: 0.88em !important;
+  background: transparent !important;
+  color: var(--nt-ink) !important;
+  border-bottom: 1px solid var(--nt-rule) !important;
+  padding: 0 !important;
+}
+
+.jp-RenderedHTMLCommon pre, .rendered_html pre {
+  background: transparent !important;
+  border-left: 2px solid var(--nt-rule) !important;
+  padding: 12px 0 12px 18px !important;
+  font-family: var(--nt-mono) !important;
+  font-size: 13.5px !important;
+  color: var(--nt-grey) !important;
+}
+
+/* Traces d'erreur : le fond rouge par defaut est neutralise.
+   Les sequences ANSI internes restent hors de portee du CSS. */
+.jp-RenderedText[data-mime-type="application/vnd.jupyter.stderr"],
+div.output_stderr {
+  background: transparent !important;
+  border-left: 2px solid var(--nt-violet) !important;
+  padding-left: 16px !important;
+  color: var(--nt-grey2) !important;
+}
+
+/* Figures */
+.jp-OutputArea-output img, .output_png img { background: transparent !important; }
+
+/* -------------------------------------------------------------------------
+   8. IMPRESSION ET EXPORT PDF
+   ------------------------------------------------------------------------- */
+
+@media print {
+  body, .jp-Notebook { background: var(--nt-ivory) !important; }
+  .jp-InputPrompt, .jp-OutputPrompt, div.prompt { display: none !important; }
+  .nt-section, .nt-cover { break-after: avoid; }
+  .nt-accent, .nt-limit, .nt-item, .nt-figures { break-inside: avoid; }
+  a { border-bottom: none !important; }
+}
+
+/* Fin de feuille. Toute modification cree une version numerotee. */
+
+
+/* Largeur commune des cellules */
+.jp-Notebook .jp-Cell,
+div.cell {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+/* Alignement du Markdown et du code */
+.jp-Cell-inputWrapper,
+.jp-Cell-outputWrapper,
+div.input,
+div.output_wrapper,
+div.text_cell_render {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+/* Largeur du texte Markdown */
+.jp-MarkdownOutput,
+.jp-MarkdownOutput p,
+.jp-MarkdownOutput li,
+.text_cell_render,
+.text_cell_render p,
+.text_cell_render li {
+    width: 100%;
+    max-width: none;
+}
+
+/* Largeur et alignement du code */
+.jp-CodeCell .jp-Cell-inputArea,
+.jp-CodeCell .jp-InputArea-editor,
+div.input_area {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+/* Suppression du retrait des cellules classiques */
+div.cell.code_cell,
+div.cell.text_cell {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Alignement des blocs personnalisés */
+.nt-cover,
+.nt-section,
+.nt-list,
+.nt-note,
+.nt-foot {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
+}
+
+/* Largeur du contenu des listes */
+.nt-item {
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box;
+}
+
+.nt-item > div {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0;
+}
+
+.nt-h,
+.nt-d,
+.nt-lede,
+.nt-note p {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* Conservation de la colonne des numéros */
+.nt-item {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    column-gap: 20px;
+}
+
+/* Alignement avec le contenu du notebook */
+.jp-MarkdownOutput > .nt-cover,
+.jp-MarkdownOutput > .nt-section,
+.jp-MarkdownOutput > .nt-list,
+.jp-MarkdownOutput > .nt-note,
+.jp-MarkdownOutput > .nt-foot,
+.text_cell_render > .nt-cover,
+.text_cell_render > .nt-section,
+.text_cell_render > .nt-list,
+.text_cell_render > .nt-note,
+.text_cell_render > .nt-foot {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+
+/* -------------------------------------------------------------------------
+9. REPERAGE DES CELLULES DE CODE
+------------------------------------------------------------------------- */
+.jp-CodeCell, .cell.code_cell {
+border-left: 3px solid var(--nt-rule) !important;
+padding-left: 10px !important;
+transition: border-color 120ms ease !important;
+}
+
+.jp-CodeCell.jp-mod-active, .jp-CodeCell.jp-mod-selected,
+.cell.code_cell.selected, .cell.code_cell.edit_mode {
+border-left-color: var(--nt-violet) !important;
+}
+
+.jp-CodeCell.jp-mod-active .jp-InputArea-editor,
+.jp-CodeCell.jp-mod-selected .jp-InputArea-editor,
+.cell.code_cell.selected div.input_area,
+.cell.code_cell.edit_mode div.input_area {
+border-left-color: var(--nt-violet) !important;
+}
+
+/* Cellule active */
+.jp-Notebook .jp-Cell.jp-mod-active,
+.jp-Notebook .jp-Cell.jp-mod-selected,
+div.cell.selected {
+    border: 1px solid rgba(91, 45, 145, 0.45) !important;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(91, 45, 145, 0.08);
+}
+
+/* Suppression de l'indicateur bleu par défaut */
+.jp-Notebook .jp-Cell.jp-mod-active::before,
+.jp-Notebook .jp-Cell.jp-mod-selected::before {
+    background: #5b2d91 !important;
+    width: 2px !important;
+}
+
+/* Mode édition */
+.jp-Notebook .jp-Cell.jp-mod-active.jp-mod-editMode,
+div.cell.selected.edit_mode {
+    border-color: rgba(91, 45, 145, 0.7) !important;
+    box-shadow: 0 0 0 1px rgba(91, 45, 145, 0.15);
+}
+
+
+
+/* -------------------------------------------------------------------------
+10. PAGE DE GARDE VIOLETTE
+------------------------------------------------------------------------- */
+.jp-MarkdownOutput > .nt-cover,
+.text_cell_render > .nt-cover,
+.nt-cover {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 0 56px 0 !important;
+    padding: 26px 34px !important;
+    box-sizing: border-box !important;
+    background: var(--nt-violet) !important;
+    color: var(--nt-on-violet-text) !important;
+    border-radius: 0 !important;
+}
+
+.nt-cover .nt-head {
+    margin-bottom: 30px;
+    padding-top: 12px;
+    border-top: 4px solid var(--nt-ivory);
+    color: var(--nt-ivory);
+}
+
+.nt-cover .nt-head .nt-num {
+    color: var(--nt-on-violet-label);
+}
+
+.nt-cover .nt-title {
+    max-width: none !important;
+    margin: 0 0 24px 0;
+    color: var(--nt-ivory) !important;
+    white-space: normal;
+}
+
+.nt-cover .nt-lede {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 0 26px 0;
+    font-weight: 400 !important;
+    color: var(--nt-on-violet-text) !important;
+    opacity: 1;
+}
+
+.nt-cover .nt-meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 34px;
+    width: 100%;
+    max-width: none;
+    margin-top: 40px;
+}
+
+.nt-cover .nt-meta > div {
+    min-width: 0;
+}
+
+.nt-cover .nt-label,
+.nt-cover .nt-label-ink {
+    color: var(--nt-on-violet-label) !important;
+}
+
+.nt-cover .nt-meta p {
+    margin: 0 !important;
+    font-weight: 400 !important;
+    color: var(--nt-on-violet-text) !important;
+    opacity: 1;
+}
+
+.nt-cover .nt-foot {
+    width: 100% !important;
+    margin: 34px 0 0 0 !important;
+    padding-top: 12px;
+    border-top: 1px solid rgba(247, 245, 241, 0.25);
+    color: var(--nt-on-violet-label) !important;
+}
+
+.nt-cover .nt-foot .nt-src {
+    color: var(--nt-on-violet-text) !important;
+}
+
+.nt-cover a {
+    color: var(--nt-ivory) !important;
+    border-bottom-color: var(--nt-on-violet-label) !important;
+}
+
+/* -------------------------------------------------------------------------
+11. LARGEUR DES BLOCS DE LIMITE
+------------------------------------------------------------------------- */
+.jp-MarkdownOutput > .nt-limit,
+.text_cell_render > .nt-limit,
+.jp-RenderedHTMLCommon .nt-limit,
+.rendered_html .nt-limit,
+.nt-limit {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+}
+
+.jp-MarkdownOutput .nt-limit p,
+.text_cell_render .nt-limit p,
+.jp-RenderedHTMLCommon .nt-limit p,
+.rendered_html .nt-limit p,
+.nt-limit p {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+}
+
+
+/* -------------------------------------------------------------------------
+12. RESPONSIVITE DES CELLULES DE CODE DANS L'EXPORT HTML
+------------------------------------------------------------------------- */
+.jp-CodeCell,
+.jp-Cell-inputWrapper,
+.jp-Cell-inputArea,
+.jp-InputArea,
+.jp-InputArea-editor,
+.jp-CodeMirrorEditor,
+.jp-Cell-outputWrapper,
+.jp-Cell-outputArea,
+.jp-OutputArea,
+.jp-OutputArea-child,
+.jp-OutputArea-output,
+.cm-editor,
+div.cell.code_cell,
+div.input,
+div.input_area,
+div.output_wrapper,
+div.output,
+div.output_subarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.jp-CodeCell,
+.jp-Cell-inputWrapper,
+.jp-Cell-inputArea,
+.jp-InputArea,
+.jp-Cell-outputWrapper,
+.jp-Cell-outputArea,
+.jp-OutputArea,
+div.cell.code_cell,
+div.input,
+div.output_wrapper {
+    overflow: visible !important;
+}
+
+.jp-InputArea-editor pre,
+.jp-CodeMirrorEditor pre,
+.jp-CodeCell .cm-editor pre,
+.jp-CodeCell .highlight pre,
+div.input_area pre,
+div.cell.code_cell div.input_area pre {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+    overflow-x: visible !important;
+    box-sizing: border-box !important;
+}
+
+.jp-InputArea-editor pre code,
+.jp-CodeMirrorEditor pre code,
+.jp-CodeCell .cm-editor pre code,
+.jp-CodeCell .highlight pre code,
+div.input_area pre code {
+    white-space: inherit !important;
+    overflow-wrap: inherit !important;
+    word-break: inherit !important;
+}
+
+.jp-RenderedText pre,
+.jp-OutputArea-output pre,
+.jp-OutputArea-output code,
+div.output_subarea pre,
+div.output_subarea code {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+    overflow-x: visible !important;
+    box-sizing: border-box !important;
+}
+
+.jp-InputArea,
+.jp-OutputArea-child {
+    display: grid !important;
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr) !important;
+}
+
+.jp-InputPrompt,
+.jp-OutputPrompt,
+div.prompt {
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.jp-InputArea-editor,
+.jp-OutputArea-output,
+div.input_area,
+div.output_subarea {
+    min-width: 0 !important;
+}
+
+.jp-OutputArea-output img,
+.output_png img,
+.jp-RenderedHTMLCommon img,
+.rendered_html img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+@media screen and (max-width: 600px) {
+    .jp-CodeCell,
+    .cell.code_cell {
+        padding-left: 4px !important;
+    }
+
+    .jp-InputArea-editor pre,
+    .jp-CodeMirrorEditor pre,
+    .jp-CodeCell .cm-editor pre,
+    .jp-CodeCell .highlight pre,
+    div.input_area pre {
+        font-size: 12px !important;
+        line-height: 1.55 !important;
+    }
+
+    .jp-RenderedText pre,
+    .jp-OutputArea-output pre,
+    div.output_subarea pre {
+        font-size: 12px !important;
+        line-height: 1.55 !important;
+    }
+
+    .jp-InputPrompt,
+    .jp-OutputPrompt,
+    div.prompt {
+        width: 28px !important;
+        min-width: 28px !important;
+        font-size: 10px !important;
+        padding-right: 4px !important;
+    }
+}
+
+.jp-RenderedHTMLCommon table, .rendered_html table { display: block; overflow-x: auto; }
